@@ -1,0 +1,21 @@
+.signup-main-cnt {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-self: center;
+    border: #A9ACAA 1px solid;
+    border-radius: 8px;
+
+}
+.signup-form-cnt {
+    display: flex;
+    flex-direction: column;
+}
+.signup-password-cnt {
+    display: flex;
+    flex-direction: column;
+}
+.signup-btn-cnt {
+    display: flex;
+    justify-content: space-between;
+}
