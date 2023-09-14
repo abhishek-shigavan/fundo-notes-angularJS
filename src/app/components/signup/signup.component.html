@@ -1,6 +1,6 @@
 <div class="signup-outer-cnt">
     <div class="signup-main-cnt">
-        <div class="signup-form-cnt">
+        <form [formGroup]="registerForm" (ngSubmit)="handleSignUp()" class="signup-form-cnt">
             <div class="signup-title-cnt">
                 <span class="signup-title">Fundo</span>
                 <span class="signup-sub-title">Create your Fundo Account</span>
@@ -9,17 +9,19 @@
                 <div class="details-input-cnt">
                     <mat-form-field appearance="outline" class="details-input">
                         <mat-label>First Name</mat-label>
-                        <input matInput placeholder="First Name">
+                        <input formControlName="fName" matInput placeholder="First Name">
+                        <mat-error>Enter First Name</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="details-input">
                         <mat-label>Last Name</mat-label>
-                        <input matInput placeholder="Last Name">
+                        <input formControlName="lName" matInput placeholder="Last Name">
+                        <mat-error>Enter Last Name</mat-error>
                     </mat-form-field>
                 </div>
                 <div>
                     <mat-form-field appearance="outline" class="details-input">
                         <mat-label>Username</mat-label>
-                        <input matInput>
+                        <input formControlName="userName" matInput>
                         <mat-hint class="input-hint">You can use letters, numbers & periods</mat-hint>
                     </mat-form-field>
                 </div>
@@ -27,11 +29,11 @@
                     <div class="details-input-cnt">
                         <mat-form-field appearance="outline" class="details-input">
                             <mat-label>Password</mat-label>
-                            <input matInput placeholder="Password">
+                            <input formControlName="newPassword" matInput placeholder="Password">
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="details-input">
                             <mat-label>Confirm</mat-label>
-                            <input matInput placeholder="Confirm">
+                            <input formControlName="confirmPassword" matInput placeholder="Confirm">
                         </mat-form-field>
                         <!-- 
                         <div>    
@@ -49,7 +51,7 @@
                 <button mat-button color="primary" routerLink="/login">Sign in instead</button>
                 <button mat-raised-button color="primary">Next</button>
             </div>
-        </div>
+        </form>
         <div class="signup-img-cnt">
             <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="logo" />
             <span>One account. All of Fundo working for you.</span>
