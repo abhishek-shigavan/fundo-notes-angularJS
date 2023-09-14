@@ -19,8 +19,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      fName: ['', Validators.required],
-      lName: ['', Validators.required],
+      fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      lName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       userName: ['', [Validators.required, Validators.email]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
@@ -29,8 +29,8 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      fName: ['', Validators.required],
-      lName: ['', Validators.required],
+      fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      lName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       userName: ['', [Validators.required, Validators.email]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
@@ -39,6 +39,14 @@ export class SignupComponent implements OnInit {
 
   get f() {
     return this.registerForm.controls;
+  }
+
+  get fName() {
+    return this.registerForm.get('fName')
+  }
+
+  get lName() {
+    return this.registerForm.get('lName')
   }
 
   handleSignUp() {
