@@ -6,7 +6,6 @@
 .login-main-cnt {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 20%;
     height: 400px;
     border: #A9ACAA 1px solid;
@@ -23,13 +22,22 @@
     height: 30%;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 .title-text{
-    font-size: 40px;
-}
-.sub-text{
     font-size: 24px;
+    font-weight: 500;
+    color: #FBBC04;
+}
+.sub-title-text{
+    height: fit-content;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 16px;
+}
+.sub-text {
+    font-size: 19px;
+    font-weight: 400;
+    margin-top: 15px;
 }
 .forgot-pass-btn {
     width: fit-content;
@@ -38,5 +46,10 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-top: 15px;
 }
-
+.login-input-cnt {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
