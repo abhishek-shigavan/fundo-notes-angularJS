@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { DomSanitizer } from '@angular/platform-browser';
 //import { MatIconRegistry } from '@angular/material/icon';
+import { MustMatch } from './must-match.validator';
 
 @Component({
   selector: 'app-signup',
@@ -18,13 +19,18 @@ export class SignupComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder) {
-    this.registerForm = this.formBuilder.group({
-      fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      lName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      userName: ['', [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-    });
+    this.registerForm = this.formBuilder.group(
+      {
+        fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        lName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        userName: ['', [Validators.required, Validators.email]],
+        newPassword: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+      },
+      {
+        validator: MustMatch('newPassword', 'confirmPassword'),
+      }
+    );
   }
 
   ngOnInit() {
@@ -34,7 +40,10 @@ export class SignupComponent implements OnInit {
       userName: ['', [Validators.required, Validators.email]],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-    });
+    },
+    {
+      validator: MustMatch('newPassword', 'confirmPassword')
+  });
   }
 
   get f() {
@@ -42,23 +51,23 @@ export class SignupComponent implements OnInit {
   }
 
   get fName() {
-    return this.registerForm.get('fName')
+    return this.registerForm.get('fName');
   }
 
   get lName() {
-    return this.registerForm.get('lName')
+    return this.registerForm.get('lName');
   }
 
   get userName() {
-    return this.registerForm.get('userName')
+    return this.registerForm.get('userName');
   }
 
   get newPassword() {
-    return this.registerForm.get('newPassword')
+    return this.registerForm.get('newPassword');
   }
 
   get confirmPassword() {
-    return this.registerForm.get('confirmPassword')
+    return this.registerForm.get('confirmPassword');
   }
 
   handleSignUp() {
@@ -67,7 +76,7 @@ export class SignupComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    
-    alert('SUCCESS!! :-)\n\n')
+
+    alert('SUCCESS!! :-)\n\n');
   }
 }
