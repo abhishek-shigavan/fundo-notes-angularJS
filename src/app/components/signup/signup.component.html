@@ -41,6 +41,7 @@
                             <mat-label>Confirm</mat-label>
                             <input formControlName="confirmPassword" matInput placeholder="Confirm">
                             <mat-error *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required</mat-error>
+                            <mat-error *ngIf="confirmPassword?.errors?.['mustMatch']">Passwords must match</mat-error>
                         </mat-form-field>
                         <!-- 
                         <div>    
