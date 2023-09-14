@@ -10,12 +10,14 @@
                     <mat-form-field appearance="outline" class="details-input">
                         <mat-label>First Name</mat-label>
                         <input formControlName="fName" matInput placeholder="First Name">
-                        <mat-error>Enter First Name</mat-error>
+                        <mat-error *ngIf="fName?.errors?.['required']">First Name is required</mat-error>
+                        <mat-error *ngIf="fName?.errors?.['pattern']">Enter a valid name</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="details-input">
                         <mat-label>Last Name</mat-label>
                         <input formControlName="lName" matInput placeholder="Last Name">
-                        <mat-error>Enter Last Name</mat-error>
+                        <mat-error *ngIf="lName?.errors?.['required']">Last Name is required</mat-error>
+                        <mat-error *ngIf="lName?.errors?.['pattern']">Enter a valid name</mat-error>
                     </mat-form-field>
                 </div>
                 <div>
