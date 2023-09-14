@@ -1,44 +1,58 @@
-<div class="signup-main-cnt">
-    <div class="signup-form-cnt">
-        <span>Fundo</span>
-        <span>Create your Fundo Account</span>
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>First Name</mat-label>
-                <input matInput placeholder="First Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Last Name</mat-label>
-                <input matInput placeholder="Last Name">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>Username</mat-label>
-                <input matInput>
-                <mat-icon matSuffix>@gmail.com</mat-icon>
-                <mat-hint>You can use letters, numbers & periods</mat-hint>
-            </mat-form-field>
-        </div>
-        <div class="signup-password-cnt">
-            <div>
-                <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input matInput placeholder="Password">
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Confirm</mat-label>
-                    <input matInput placeholder="Confirm">
-                </mat-form-field>
+<div class="signup-outer-cnt">
+    <div class="signup-main-cnt">
+        <div class="signup-form-cnt">
+            <div class="signup-title-cnt">
+                <span class="signup-title">Fundo</span>
+                <span class="signup-sub-title">Create your Fundo Account</span>
             </div>
-            <span>Use 8 or more characters with a mix of letters, numbers & symbols</span>
+            <div class="signup-input-cnt">
+                <div class="details-input-cnt">
+                    <mat-form-field appearance="outline" class="details-input">
+                        <mat-label>First Name</mat-label>
+                        <input matInput placeholder="First Name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="details-input">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput placeholder="Last Name">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline" class="details-input">
+                        <mat-label>Username</mat-label>
+                        <input matInput>
+                        <mat-hint class="input-hint">You can use letters, numbers & periods</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="signup-password-cnt">
+                    <div class="details-input-cnt">
+                        <mat-form-field appearance="outline" class="details-input">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="details-input">
+                            <mat-label>Confirm</mat-label>
+                            <input matInput placeholder="Confirm">
+                        </mat-form-field>
+                        <!-- 
+                        <div>    
+                        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                            <mat-icon svgIcon="hide-pass" aria-hidden="false"
+                                aria-label="Example thumbs up SVG icon"></mat-icon>
+                        </button>
+                        </div>
+                        -->
+                    </div>
+                    <span>Use 8 or more characters with a mix of letters, numbers & symbols</span>
+                </div>
+            </div>
+            <div class="signup-btn-cnt">
+                <button mat-button color="primary">Sign in instead</button>
+                <button mat-raised-button color="primary">Next</button>
+            </div>
         </div>
-        <div class="signup-btn-cnt">
-            <button mat-button color="primary">Sign in instead</button>
-            <button mat-raised-button color="primary">Next</button>
+        <div class="signup-img-cnt">
+            <img src="https://ssl.gstatic.com/accounts/signup/glif/account.svg" alt="logo" />
+            <span>One account. All of Fundo working for you.</span>
         </div>
-    </div>
-    <div>
-
     </div>
 </div>
