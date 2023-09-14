@@ -49,6 +49,18 @@ export class SignupComponent implements OnInit {
     return this.registerForm.get('lName')
   }
 
+  get userName() {
+    return this.registerForm.get('userName')
+  }
+
+  get newPassword() {
+    return this.registerForm.get('newPassword')
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword')
+  }
+
   handleSignUp() {
     this.submitted = true;
     // stop here if form is invalid
