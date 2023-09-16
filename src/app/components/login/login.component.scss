@@ -3,15 +3,22 @@
     width: 100%;
     height: 100%;    
 }
+.login-outer-sub-cnt {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
 .login-main-cnt {
     display: flex;
     flex-direction: column;
     width: 20%;
-    height: 400px;
+    height: auto;
     border: #A9ACAA 1px solid;
     border-radius: 8px;
     padding: 40px;
-    margin: auto;
 }
 .login-pass-cnt {
     display: flex;
@@ -29,15 +36,16 @@
     color: #FBBC04;
 }
 .sub-title-text{
-    height: fit-content;
+    height: 32px;
     font-size: 24px;
     font-weight: 400;
-    margin-top: 16px;
+    padding-top: 16px;
 }
 .sub-text {
+    height: 24px;
     font-size: 19px;
     font-weight: 400;
-    margin-top: 15px;
+    padding-top: 7px;
 }
 .forgot-pass-btn {
     width: fit-content;
@@ -46,10 +54,29 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-bottom: 20px;
 }
 .login-input-cnt {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 20px;
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
+.login-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+    display: none;
+}
+.login-footer-cnt {
+    display: flex;
+    width: calc(20% + 80px);
+    padding: 24px 4px;
+    align-content: center;
+    justify-content: space-between;
+}
+  
