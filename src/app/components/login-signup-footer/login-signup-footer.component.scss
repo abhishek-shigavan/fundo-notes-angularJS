@@ -1,0 +1,24 @@
+.footer-main-cnt {
+    width: 100%;
+}
+.link-cnt {
+    // width: 40%;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+        font-size: 13px;
+        color:rgb(60,64,67);
+        cursor: pointer;
+        text-align: center;
+        margin-left: 40px;
+    }
+}
+.mat-mdc-select-value {
+    font-size: 14px;
+    color:rgb(60,64,67);
+    width: 50%;
+}
+.mat-mdc-select-arrow-wrapper {
+    padding-left: 15px;
+}

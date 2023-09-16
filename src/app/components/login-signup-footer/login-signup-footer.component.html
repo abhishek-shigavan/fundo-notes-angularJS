@@ -1,0 +1,15 @@
+<!-- <div class="footer-main-cnt"> -->
+    <div class="lang-cnt">
+        <mat-select [(value)]="selectedLang">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let language of languages" [value]="language.language">
+              {{language.language}} ({{(language.country)}})
+            </mat-option>
+          </mat-select>            
+    </div>
+    <div class="link-cnt">
+        <span>Help</span>
+        <span>Privacy</span>
+        <span>Terms</span>
+    </div>
+<!-- </div> -->
