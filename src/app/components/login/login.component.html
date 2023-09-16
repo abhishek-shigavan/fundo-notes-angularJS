@@ -1,4 +1,5 @@
 <div class="login-outer-cnt">
+    <div class="login-outer-sub-cnt">
     <div class="login-main-cnt">
         <div class="title-text-cnt">
             <div><span class="title-text" style="color: #FBBC04;">Fundo</span></div>
@@ -7,20 +8,33 @@
                 <span>Use your Fundo Account</span>
             </div>
         </div>
-        <div class="login-input-cnt">
-            <mat-form-field appearance="outline">
-                <mat-label>Email or phone</mat-label>
-                <input matInput placeholder="Email or phone">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Enter password">
-            </mat-form-field>
-            <button class="forgot-pass-btn" mat-button color="primary">Forgot password</button>
-        </div>
+        <form [formGroup]="loginForm" class="login-input-cnt">
+            <div class="login-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email or phone</mat-label>
+                    <input matInput placeholder="Email or phone" formControlName="userName">
+                </mat-form-field>
+                <div *ngIf="submitted && userName?.errors">
+                    <span *ngIf="userName?.errors?.['required']">Email is required</span>
+                </div>
+            </div>
+            <div class="login-input">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Enter password" formControlName="password">
+                </mat-form-field>
+                <div *ngIf="submitted && password?.errors">
+                    <span *ngIf="password?.errors?.['required']">Password is required</span>
+                </div>
+                <button class="forgot-pass-btn" mat-button color="primary">Forgot password</button>
+            </div>
+
+        </form>
         <div class="login-btn-cnt">
             <button mat-button color="primary" routerLink="/signup">Create account</button>
-            <button mat-raised-button color="primary">Login</button>
+            <button mat-raised-button color="primary" (click)="handleLogin()">Login</button>
         </div>
     </div>
+    <app-login-signup-footer class="login-footer-cnt"></app-login-signup-footer>
+</div>
 </div>
