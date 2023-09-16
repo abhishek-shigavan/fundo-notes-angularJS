@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { DomSanitizer } from '@angular/platform-browser';
 //import { MatIconRegistry } from '@angular/material/icon';
@@ -8,6 +8,7 @@ import { MustMatch } from './must-match.validator';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SignupComponent implements OnInit {
   /*constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
@@ -27,24 +28,20 @@ export class SignupComponent implements OnInit {
         newPassword: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
       },
-      {
-        validator: MustMatch('newPassword', 'confirmPassword'),
-      }
-    );
-  }
+      { validator: MustMatch('newPassword', 'confirmPassword'), }
+  )}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      lName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      userName: ['', [Validators.required, Validators.email]],
-      newPassword: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-    },
-    {
-      validator: MustMatch('newPassword', 'confirmPassword')
-  });
-  }
+    this.registerForm = this.formBuilder.group(
+      {
+        fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        lName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        userName: ['', [Validators.required, Validators.email]],
+        newPassword: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+      },
+      { validator: MustMatch('newPassword', 'confirmPassword'), }
+  )}
 
   get f() {
     return this.registerForm.controls;
