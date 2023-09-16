@@ -8,14 +8,28 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
+import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
+import { LoginSignupFooterComponent } from './components/login-signup-footer/login-signup-footer.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    SignupComponent,
+    LoginComponent,
+    DashboardComponent,
+    DashboardHeaderComponent,
+    SideNavBarComponent,
+    LoginSignupFooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,7 +39,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatIconModule,
     MatChipsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSidenavModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
