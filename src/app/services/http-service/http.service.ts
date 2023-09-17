@@ -10,7 +10,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  async loginCall(endpoint: string, data: any): Promise<any> {
+  async loginSignupCall(endpoint: string, data: any): Promise<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
