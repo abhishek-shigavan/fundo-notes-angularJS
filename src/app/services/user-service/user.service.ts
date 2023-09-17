@@ -9,7 +9,7 @@ export class UserService {
 
   async login(credentials: { email: string; password: string }): Promise<any> {
     try {
-      return this.httpService.loginCall("/user/login", credentials)
+      return this.httpService.loginSignupCall("/user/login", credentials)
     } catch (error) {
       return error
     }
@@ -22,5 +22,13 @@ export class UserService {
           return error
         }
       );*/
+  }
+
+  async signup(data: {}): Promise<any> {
+    try {
+      return this.httpService.loginSignupCall("/user/userSignUp", data)
+    } catch (error) {
+      return error
+    }
   }
 }
