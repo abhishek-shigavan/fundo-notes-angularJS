@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private loginService: UserService) {
     this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required],
@@ -33,14 +34,14 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  handleLogin() {
+  async handleLogin() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
-      console.log('invalid');
       return;
     }
 
-    alert('SUCCESS!! :-)\n\n');
+    const { userName, password } = this.loginForm.value
+    const res = await this.loginService.login({ "email": userName, "password": password })
+    // console.log("res : ", res)
   }
 }
