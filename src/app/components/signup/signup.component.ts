@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { DomSanitizer } from '@angular/platform-browser';
 //import { MatIconRegistry } from '@angular/material/icon';
 import { MustMatch } from './must-match.validator';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private signupService: UserService) {
     this.registerForm = this.formBuilder.group(
       {
         fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -67,13 +68,16 @@ export class SignupComponent implements OnInit {
     return this.registerForm.get('confirmPassword');
   }
 
-  handleSignUp() {
+  async handleSignUp() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
 
-    alert('SUCCESS!! :-)\n\n');
+    const { fName, lName, userName, newPassword } = this.registerForm.value
+
+    const res = await this.signupService.signup({ "firstName": fName, "lastName": lName, "email": userName, "password": newPassword, "service": "advance" })
+    console.log("res : ", res)
   }
 }
