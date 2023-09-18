@@ -20,6 +20,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardHeaderComponent } from './components/dashboard-header/dashboard-header.component';
 import { SideNavBarComponent } from './components/side-nav-bar/side-nav-bar.component';
 import { LoginSignupFooterComponent } from './components/login-signup-footer/login-signup-footer.component';
+import { NotesContainerComponent } from './components/notes-container/notes-container.component';
+import { TrashContainerComponent } from './components/trash-container/trash-container.component';
+import { ArchiveContainerComponent } from './components/archive-container/archive-container.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { LoginSignupFooterComponent } from './components/login-signup-footer/log
     DashboardHeaderComponent,
     SideNavBarComponent,
     LoginSignupFooterComponent,
+    NotesContainerComponent,
+    TrashContainerComponent,
+    ArchiveContainerComponent,
   ],
   imports: [
     BrowserModule,
