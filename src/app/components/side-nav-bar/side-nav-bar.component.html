@@ -1,0 +1,28 @@
+
+    <mat-drawer-container class="side-nav-bar-outer-cnt" hasBackdrop="false">
+        <mat-drawer class="side-nav-drawer-cnt" #drawer mode="over">
+            <div>
+                <img  class="icon-cnt" src="../../../assets/icons/bulb.png" />
+                <span>Note</span>
+            </div>
+            <div>
+                <img class="icon-cnt" src="../../../assets/icons/reminder.png" />
+                <span>Reminder</span>
+            </div>
+            <div>
+                <img class="icon-cnt" src="../../../assets/icons/edit.png" />
+                <span>Edit Label</span>
+            </div>
+            <div>
+                <img class="icon-cnt" src="../../../assets/icons/archive.png" />
+                <span>Archive</span>
+            </div>
+            <div>
+                <img class="icon-cnt" src="../../../assets/icons/trash.png" />
+                <span>Trash</span>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content>
+            <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
+        </mat-drawer-content>
+    </mat-drawer-container>
