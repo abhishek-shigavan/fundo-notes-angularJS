@@ -1,0 +1,25 @@
+.dashboard-header-outer-cnt {
+    display: flex;
+    width: 100%;
+    height: 72px;
+    border-bottom: 1px solid#DADCE0;
+}
+.dashboard-header-inner-cnt {
+    display: flex;
+    width: 100%;
+    padding: 8px 12px;
+}
+.logo-title-cnt {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    img {
+        height: 48px;
+    }
+    span {
+        font-size: 28px;
+        font-weight: 500;
+        color: #FBBC04;
+    }
+}
