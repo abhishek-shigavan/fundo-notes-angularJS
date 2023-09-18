@@ -1,0 +1,29 @@
+.side-nav-bar-outer-cnt {
+    height: 100%;
+}
+.side-nav-drawer-cnt {
+    width: 280px;
+
+    div {
+        display: flex;
+        height: 48px;
+        align-items: center;
+        padding-left: 12px;
+
+        span {
+            font-size: 14px;
+            font-weight: 500;
+            margin-left: 20px;
+        }
+
+        &:hover {
+            background-color: #FEEFC3;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+    }
+}
+.icon-cnt {
+    height: 24px;
+    padding: 0px 12px;
+}
