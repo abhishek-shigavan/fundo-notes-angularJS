@@ -23,6 +23,8 @@ import { LoginSignupFooterComponent } from './components/login-signup-footer/log
 import { NotesContainerComponent } from './components/notes-container/notes-container.component';
 import { TrashContainerComponent } from './components/trash-container/trash-container.component';
 import { ArchiveContainerComponent } from './components/archive-container/archive-container.component';
+import { AddNoteComponent } from './components/add-note/add-note.component';
+import { NoteFooterIconsComponent } from './components/note-footer-icons/note-footer-icons.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { ArchiveContainerComponent } from './components/archive-container/archiv
     NotesContainerComponent,
     TrashContainerComponent,
     ArchiveContainerComponent,
+    AddNoteComponent,
+    NoteFooterIconsComponent,
   ],
   imports: [
     BrowserModule,
