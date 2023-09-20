@@ -27,6 +27,14 @@ export class AddNoteComponent {
     this.expand = !this.expand
   }
 
+  adjustTextareaHeight() {
+    const textarea = document.querySelector('textarea');
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  }
+
   async handleCloseNote() {
     this.expand = !this.expand
     const noteObj = {
