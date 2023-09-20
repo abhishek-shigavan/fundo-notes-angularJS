@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PIN_ICON, TICK_ICON, BRUSH_ICON, IMG_ICON, UNDO_ICON, REDO_ICON } from 'src/assets/svg-icons';
+import { NoteService } from 'src/app/services/note-service/note.service';
 
 @Component({
   selector: 'app-add-note',
@@ -10,8 +11,10 @@ import { PIN_ICON, TICK_ICON, BRUSH_ICON, IMG_ICON, UNDO_ICON, REDO_ICON } from 
 })
 export class AddNoteComponent {
   expand = false
+  title: string = ""
+  description: string = ""
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private noteService: NoteService) {
     iconRegistry.addSvgIconLiteral('pin-icon', sanitizer.bypassSecurityTrustHtml(PIN_ICON));
     iconRegistry.addSvgIconLiteral('tick-icon', sanitizer.bypassSecurityTrustHtml(TICK_ICON));
     iconRegistry.addSvgIconLiteral('brush-icon', sanitizer.bypassSecurityTrustHtml(BRUSH_ICON));
@@ -22,5 +25,19 @@ export class AddNoteComponent {
   
   handleNoteClick = () => {
     this.expand = !this.expand
+  }
+
+  async handleCloseNote() {
+    this.expand = !this.expand
+    const noteObj = {
+      "title" : this.title,
+      "description" : this.description,
+      "isPined": false,
+      "isArchived": false,
+      "color": "",
+      "reminder": "",
+    }
+    const res = await this.noteService.addNote(noteObj)
+    console.log("note obj : ", res)
   }
 }
