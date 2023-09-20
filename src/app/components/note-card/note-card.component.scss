@@ -1,0 +1,22 @@
+.note-card-cnt {
+    display: flex;
+    flex-direction: column;
+    width: 206px;
+    padding: 12px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+
+    &:hover .note-card-footer {
+        visibility: visible;
+    }
+}
+.note-title {
+    font-size: 16px;
+    font-weight: 500;
+}
+.note-description {
+    padding: 12px 0px;
+}
+.note-card-footer {
+    visibility: hidden;
+}
