@@ -18,10 +18,13 @@
 <ng-template #addNote>
     <div class="add-note-main-cnt">
         <div class="add-note-inner-cnt" style="width: initial">
-            <input placeholder="Title" />
+            <input [(ngModel)]="title" placeholder="Title"  />
             <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                 <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
             </button>
+        </div>
+        <div class="note-details-cnt">
+            <input [(ngModel)]="description" placeholder="Take a note...">
         </div>
         <div class="add-note-footer-cnt">
             <div>
@@ -35,7 +38,7 @@
                         aria-label="Example thumbs up SVG icon"></mat-icon>
                 </button>
             </div>
-            <button mat-button (click)="handleNoteClick()">Close</button>
+            <button mat-button (click)="handleCloseNote()">Close</button>
         </div>
     </div>
 </ng-template>
