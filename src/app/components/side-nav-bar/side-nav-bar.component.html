@@ -23,7 +23,36 @@
     </mat-drawer>
     <mat-drawer-content>
         <div class="drawer-content-cnt">
-            <router-outlet></router-outlet>
+            <div class="side-navbar-cnt">
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="Note SVG icon"></mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="Reminder SVG icon"></mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="Edit SVG icon"></mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Archive SVG icon"></mat-icon>
+                    </button>
+                </div>
+                <div>
+                    <button mat-icon-button>
+                        <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="Trash SVG icon"></mat-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="router-outlet-cnt">
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>
