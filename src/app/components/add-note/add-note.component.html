@@ -24,7 +24,7 @@
             </button>
         </div>
         <div class="note-details-cnt">
-            <input [(ngModel)]="description" placeholder="Take a note...">
+            <textarea [(ngModel)]="description" (input)="adjustTextareaHeight()" placeholder="Take a note..."></textarea>
         </div>
         <div class="add-note-footer-cnt">
             <div>
