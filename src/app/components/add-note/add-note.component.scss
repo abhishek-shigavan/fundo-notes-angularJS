@@ -52,12 +52,12 @@
     padding: 0px 16px 12px 16px;
     flex-wrap: wrap;
     
-
-    input {
+    textarea {
         width: 100%;
         border: none;
         font-size: 16px;
-
+        overflow-y: hidden;
+        resize: none;
         &:focus {
             outline: none;
         }
