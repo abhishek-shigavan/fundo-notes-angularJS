@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http-service/http.service';
 
+interface LoginResponse {
+  id?: string,
+  firstName?: string,
+  lastName?: string,
+  email?: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   constructor(private httpService: HttpService) { }
 
-  async login(credentials: { email: string; password: string }): Promise<any> {
+  async login(credentials: { email: string; password: string }): Promise<LoginResponse> {
     try {
-      return this.httpService.loginSignupCall("/user/login", credentials)
+      const res: LoginResponse = await this.httpService.loginSignupCall("/user/login", credentials) || {}
+      localStorage.setItem("accessToken", res?.id || "")
+      localStorage.setItem("userName", res?.firstName || "" + res?.lastName || "" )
+      localStorage.setItem("userEmail", res?.email || "")
+      return res
     } catch (error) {
-      return error
+      return error || {}
     }
   /*  
     this.httpService.loginCall("/user/login",credentials).subscribe(
