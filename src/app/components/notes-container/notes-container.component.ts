@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NoteService } from 'src/app/services/note-service/note.service';
 
 @Component({
   selector: 'app-notes-container',
@@ -8,6 +9,18 @@ import { Component } from '@angular/core';
     class: 'app-notes-cnt',
   },
 })
-export class NotesContainerComponent {
-
+export class NotesContainerComponent implements OnInit{
+  notesArray: Object = []
+  constructor(private noteService: NoteService) {}
+  
+  ngOnInit() {
+    this.noteService.getAllNotes().subscribe(
+      (response) => {
+        this.notesArray = [...response?.data?.data]
+      },
+      (error) => {
+        console.error('API Error:', error);
+      }
+    );
+  }
 }
