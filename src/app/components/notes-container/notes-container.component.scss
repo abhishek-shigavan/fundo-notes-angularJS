@@ -1,6 +1,10 @@
 ::ng-deep .app-notes-cnt {
     width: 100%;
 }
+.create-outer-cnt {
+    display: flex;
+    width: 100%;
+}
 .create-note-cnt {
     display: flex;
     margin: 32px auto 16px auto;
@@ -8,6 +12,11 @@
 }
 .display-note-cnt {
     display: flex;
-    padding: 40px 120px;
+    flex-direction: row;
+    margin: 40px 120px;
+    width: 100%;
+}
+.display-note-outer-cnt {
+    display: flex;
     width: 100%;
 }
