@@ -1,3 +1,9 @@
+::ng-deep .note-card-display-cnt {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 .note-card-cnt {
     display: flex;
     flex-direction: column;
@@ -5,6 +11,7 @@
     padding: 12px 16px;
     border: 1px solid #E0E0E0;
     border-radius: 8px;
+    margin-bottom: 24px;
 
     &:hover .note-card-footer {
         visibility: visible;
