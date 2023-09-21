@@ -1,8 +1,13 @@
+::ng-deep .app-notes-cnt {
+    width: 100%;
+}
 .create-note-cnt {
     display: flex;
     margin: 32px auto 16px auto;
+    justify-content: center;
 }
 .display-note-cnt {
     display: flex;
+    padding: 40px 120px;
     width: 100%;
 }
