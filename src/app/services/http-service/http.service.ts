@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
   private baseUrl = "http://fundoonotes.incubation.bridgelabz.com/api"
+  private queryParams = new HttpParams().set("access_token", localStorage.getItem('accessToken') || "")
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +23,7 @@ export class HttpService {
     } catch (error) {
       return error
     }
+
   }
 
   async addNoteCall(endpoint: string, data: any): Promise<any> {
@@ -28,13 +31,20 @@ export class HttpService {
       'Content-Type': "multipart/form-data",
       'Accept': 'application/json',
     })
-    const queryParams = new HttpParams().set("access_token", localStorage.getItem('accessToken') || "")
     try {
-      const res = await this.http.post(this.baseUrl+endpoint+`?${queryParams.toString()}`, data, {headers}).toPromise()
+      const res = await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers}).toPromise()
       console.log(res)
       return res
     } catch (err) {
       return err
     }
+  }
+
+  getAllNotesCall(endpoint: string): Observable<any> {
+    return this.http.get(this.baseUrl+endpoint+`?${this.queryParams.toString()}`).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
   }
 }
