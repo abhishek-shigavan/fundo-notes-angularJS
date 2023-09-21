@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http-service/http.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class NoteService {
     } catch (error) {
       return error
     }
+  }
+
+  getAllNotes(): Observable<any> {
+    return this.httpService.getAllNotesCall("/notes/getNotesList")
   }
 }
