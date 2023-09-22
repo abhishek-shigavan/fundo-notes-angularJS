@@ -23,4 +23,8 @@ export class NotesContainerComponent implements OnInit{
       }
     );
   }
+
+  addNoteInNotesArray($event: any) {
+    this.notesArray = [$event, ...this.notesArray]
+  }
 }
