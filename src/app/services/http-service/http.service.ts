@@ -28,8 +28,8 @@ export class HttpService {
 
   async addNoteCall(endpoint: string, data: any): Promise<any> {
     const headers = new HttpHeaders({
-      'Content-Type': "multipart/form-data",
-      'Accept': 'application/json',
+      'Accept': "application/json",
+      Authorization: localStorage.getItem('accessToken') || ""
     })
     try {
       const res = await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers}).toPromise()
