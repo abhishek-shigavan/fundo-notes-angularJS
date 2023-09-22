@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PIN_ICON, TICK_ICON, BRUSH_ICON, IMG_ICON, UNDO_ICON, REDO_ICON } from 'src/assets/svg-icons';
@@ -13,6 +13,8 @@ export class AddNoteComponent {
   expand = false
   title: string = ""
   description: string = ""
+
+  @Output() addNoteInNotesList = new EventEmitter<Object>()
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private noteService: NoteService) {
     iconRegistry.addSvgIconLiteral('pin-icon', sanitizer.bypassSecurityTrustHtml(PIN_ICON));
@@ -46,6 +48,7 @@ export class AddNoteComponent {
       "reminder": "",
     }
     const res = await this.noteService.addNote(noteObj)
+    this.addNoteInNotesList.emit(noteObj)
     console.log("note obj : ", res)
   }
 }
