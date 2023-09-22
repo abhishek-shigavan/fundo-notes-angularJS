@@ -26,6 +26,7 @@ import { TrashContainerComponent } from './components/trash-container/trash-cont
 import { ArchiveContainerComponent } from './components/archive-container/archive-container.component';
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { NoteFooterIconsComponent } from './components/note-footer-icons/note-footer-icons.component';
+import { NoteCardComponent } from './components/note-card/note-card.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NoteFooterIconsComponent } from './components/note-footer-icons/note-fo
     ArchiveContainerComponent,
     AddNoteComponent,
     NoteFooterIconsComponent,
+    NoteCardComponent,
   ],
   imports: [
     BrowserModule,
