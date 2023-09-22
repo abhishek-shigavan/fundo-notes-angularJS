@@ -10,13 +10,13 @@ import { NoteService } from 'src/app/services/note-service/note.service';
   },
 })
 export class NotesContainerComponent implements OnInit{
-  notesArray: Object = []
-  constructor(private noteService: NoteService) {}
+  notesArray: any = []
+  constructor(private noteService: NoteService) { }
   
   ngOnInit() {
     this.noteService.getAllNotes().subscribe(
       (response) => {
-        this.notesArray = [...response?.data?.data]
+         this.notesArray = [...response?.data?.data]
       },
       (error) => {
         console.error('API Error:', error);
