@@ -1,6 +1,6 @@
 <div class="create-note-outer-cnt">
     <div class="create-note-cnt">
-        <app-add-note></app-add-note>
+        <app-add-note (addNoteInNotesList)="addNoteInNotesArray($event)"></app-add-note>
     </div>
 </div>
 <div class="display-note-outer-cnt">
