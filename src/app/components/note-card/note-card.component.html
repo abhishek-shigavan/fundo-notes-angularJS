@@ -1,9 +1,9 @@
-<div class="note-card-cnt">
+<div *ngFor="let noteDetails of notesList" class="note-card-cnt">
     <span class="note-title">
-        sample
+        {{noteDetails.title}}
     </span>
     <span class="note-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia ex delectus rerum corrupti alias voluptate praesentium ipsa aut sint, officiis adipisci voluptas facere nesciunt libero quas laudantium doloremque provident deleniti.
+        {{noteDetails.description}}
     </span>
     <div class="note-card-footer">
         <app-note-footer-icons></app-note-footer-icons>
