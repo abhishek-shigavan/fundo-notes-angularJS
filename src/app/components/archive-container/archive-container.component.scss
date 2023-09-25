@@ -1,0 +1,9 @@
+::ng-deep .app-archive-notes-cnt {
+    width: 100%;
+}
+.archive-notes-cnt {
+    display: flex;
+    // width: 100%;
+    padding: 15px 130px;
+    justify-content: flex-start;
+}
