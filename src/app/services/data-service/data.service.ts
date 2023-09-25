@@ -13,4 +13,8 @@ export class DataService {
   toggleSideNavbar(val: boolean) {
     this.showSideNavbar.next(val)
   }
+
+  handleNoteOperations(note: Object, operation: string) {
+    console.log(note)  
+  }
 }
