@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -57,7 +58,8 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
     MatSidenavModule,
     MatSelectModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
