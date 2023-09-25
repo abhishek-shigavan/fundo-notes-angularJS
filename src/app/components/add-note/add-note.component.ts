@@ -39,6 +39,8 @@ export class AddNoteComponent {
 
   async handleCloseNote() {
     this.expand = !this.expand
+
+    if(this.title?.length == 0 || this.description?.length == 0) return
     const noteObj = {
       "title" : this.title,
       "description" : this.description,
@@ -48,7 +50,7 @@ export class AddNoteComponent {
       "reminder": "",
     }
     const res = await this.noteService.addNote(noteObj)
-    this.addNoteInNotesList.emit(noteObj)
     console.log("note obj : ", res)
+    this.addNoteInNotesList.emit(res?.status?.details)
   }
 }
