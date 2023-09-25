@@ -9,6 +9,10 @@ import { catchError } from 'rxjs/operators';
 export class HttpService {
   private baseUrl = "http://fundoonotes.incubation.bridgelabz.com/api"
   private queryParams = new HttpParams().set("access_token", localStorage.getItem('accessToken') || "")
+  private authHeader = new HttpHeaders({
+    'Accept': "application/json",
+    Authorization: localStorage.getItem('accessToken') || ""
+  })
 
   constructor(private http: HttpClient) { }
 
@@ -27,12 +31,8 @@ export class HttpService {
   }
 
   async addNoteCall(endpoint: string, data: any): Promise<any> {
-    const headers = new HttpHeaders({
-      'Accept': "application/json",
-      Authorization: localStorage.getItem('accessToken') || ""
-    })
     try {
-      const res = await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers}).toPromise()
+      const res = await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers: this.authHeader}).toPromise()
       console.log(res)
       return res
     } catch (err) {
@@ -40,11 +40,27 @@ export class HttpService {
     }
   }
 
-  getAllNotesCall(endpoint: string): Observable<any> {
+  getNotesCall(endpoint: string): Observable<any> {
     return this.http.get(this.baseUrl+endpoint+`?${this.queryParams.toString()}`).pipe(
       catchError((error) => {
         return throwError(error);
       })
     );
+  }
+
+  async archiveNoteCall(endpoint: string, data: Object): Promise<any> {
+    try{
+      return await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers: this.authHeader}).toPromise()
+    } catch (err) {
+      return err
+    }
+  }
+
+  async trashNoteCall(endpoint: string, data: Object): Promise<any> {
+    try {
+      return await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers: this.authHeader}).toPromise()
+    } catch (err) {
+      return err
+    }
   }
 }
