@@ -1,26 +1,46 @@
-<div>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle} ">
-        <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon" ></mat-icon>
+<div *ngIf="iconsContainer == 'trash'; else footerIcons">
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+        [ngClass]="{'enable-style-class': enableStyle} ">
+        <mat-icon svgIcon="delete-forever-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
     </button>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}">
-        <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+        [ngClass]="{'enable-style-class': enableStyle} ">
+        <mat-icon svgIcon="restore-icon" aria-hidden="false" aria-label="Re SVG icon"></mat-icon>
     </button>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}">
-        <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-    </button>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}">
-        <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-    </button>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}" (click)="handleArchiveOperation()">
-        <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-    </button>
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [matMenuTriggerFor]="menu" [ngClass]="{'enable-style-class': enableStyle}">
-        <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="handleTrashOperation()">Delete note</button>
-        <button mat-menu-item>Add label</button>
-        <button mat-menu-item>Add drawing</button>
-        <button mat-menu-item>Make a copy</button>
-    </mat-menu>
 </div>
+
+<ng-template #footerIcons>
+    <div>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            [ngClass]="{'enable-style-class': enableStyle} ">
+            <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            [ngClass]="{'enable-style-class': enableStyle}">
+            <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            [ngClass]="{'enable-style-class': enableStyle}">
+            <mat-icon svgIcon="color-palatte-icon" aria-hidden="false"
+                aria-label="Example thumbs up SVG icon"></mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            [ngClass]="{'enable-style-class': enableStyle}">
+            <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            [ngClass]="{'enable-style-class': enableStyle}" (click)="handleArchiveOperation()">
+            <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            [matMenuTriggerFor]="menu" [ngClass]="{'enable-style-class': enableStyle}">
+            <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="handleTrashOperation()">Delete note</button>
+            <button mat-menu-item>Add label</button>
+            <button mat-menu-item>Add drawing</button>
+            <button mat-menu-item>Make a copy</button>
+        </mat-menu>
+    </div>
+</ng-template>
