@@ -30,4 +30,9 @@ export class ArchiveContainerComponent implements OnInit {
     )
     this.dataService.updateCurrentRoute(this.route.snapshot?.routeConfig?.path || "")
   }
+
+  updateArchiveNotesArray($event: any) {
+    const updatedArchiveNotes = this.archiveNotesArray.filter((item : { id : string }) => item.id != $event.noteDetails.id)
+    this.archiveNotesArray = [...updatedArchiveNotes]
+  }
 }
