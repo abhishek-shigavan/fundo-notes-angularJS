@@ -6,6 +6,6 @@
         {{noteDetails.description}}
     </span>
     <div class="note-card-footer">
-        <app-note-footer-icons [enableStyle]="applyStyle" [noteDetails]="noteDetails"></app-note-footer-icons>
+        <app-note-footer-icons [enableStyle]="applyStyle" [noteDetails]="noteDetails" (handleNotesOperations)="handleNotesOperation($event)"></app-note-footer-icons>
     </div>
 </div>
