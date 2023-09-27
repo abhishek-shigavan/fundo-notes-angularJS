@@ -7,11 +7,17 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
   private showSideNavbar = new BehaviorSubject(false)
   currentSideNavbarState = this.showSideNavbar.asObservable()
+  private selectedRoute = new BehaviorSubject("")
+  currentSelectedRoute = this.selectedRoute.asObservable()
 
   constructor() { }
 
   toggleSideNavbar(val: boolean) {
     this.showSideNavbar.next(val)
+  }
+
+  updateCurrentRoute(val: string) {
+    this.selectedRoute.next(val)
   }
 
   handleNoteOperations(note: Object, operation: string) {
