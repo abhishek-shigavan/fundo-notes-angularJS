@@ -27,4 +27,9 @@ export class TrashContainerComponent implements OnInit {
     )
     this.dataService.updateCurrentRoute(this.route.snapshot?.routeConfig?.path || "")
   }
+
+  updateTrashNotesArray($event: any) {
+    const updatedTrashNotes = this.trashNotesArray.filter((item: {id: string}) => item.id != $event.noteDetails.id)
+    this.trashNotesArray = [...updatedTrashNotes]
+  }
 }
