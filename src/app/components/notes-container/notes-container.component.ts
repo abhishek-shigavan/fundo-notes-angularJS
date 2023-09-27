@@ -29,15 +29,13 @@ export class NotesContainerComponent implements OnInit{
   }
 
   addNoteInNotesArray($event: any) {
-    console.log($event)
     this.notesArray = [$event, ...this.notesArray]
   }
 
-  addNoteInArchive() {
-
-  }
-
-  addNoteInTrash() {
-    
+  updateNotesArray($event: any) {
+    if($event.operation == 'archive' || $event.operation == 'trash') {
+      const updatedNotesArray = this.notesArray.filter((item: { id: String }) => item.id != $event.noteDetails?.id)
+      this.notesArray = [...updatedNotesArray]
+    }
   }
 }
