@@ -21,9 +21,14 @@
         <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}">
             <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
         </button>
-        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}" (click)="handleIconsClick('archive')">
-            <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button *ngIf="iconsContainer == 'archive'; else archiveIcon" mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}" (click)="handleIconsClick('unarchive')">
+            <mat-icon svgIcon="unarchive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
         </button>
+        <ng-template #archiveIcon>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}" (click)="handleIconsClick('archive')">
+                <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            </button>
+        </ng-template>
         <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [matMenuTriggerFor]="menu" [ngClass]="{'enable-style-class': enableStyle}">
             <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
         </button>
