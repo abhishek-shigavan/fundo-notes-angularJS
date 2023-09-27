@@ -1,5 +1,5 @@
 import { state } from '@angular/animations';
-import { Component, Input, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
@@ -13,14 +13,14 @@ import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_
   styleUrls: ['./note-footer-icons.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-
 export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   @Input() enableStyle!: boolean;
-  @Input() noteDetails: any
-  iconsContainer: string = ""
+  @Input() noteDetails: any;
+  @Output() handleNotesOperations = new EventEmitter<Object>();
+  iconsContainer: string = '';
   subscription!: Subscription;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataService, private noteService: NoteService) {
+  constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataService, private noteService: NoteService ) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('collabrator-icon', sanitizer.bypassSecurityTrustHtml(COLLABRATOR_ICON));
     iconRegistry.addSvgIconLiteral('color-palatte-icon', sanitizer.bypassSecurityTrustHtml(COLOR_PALATTE_ICON));
@@ -33,21 +33,31 @@ export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.dataService.currentSelectedRoute.subscribe(state => this.iconsContainer = state)
+    this.subscription = this.dataService.currentSelectedRoute.subscribe(
+      (state) => (this.iconsContainer = state)
+    );
   }
-   
+
   ngOnDestroy() {
-    this.subscription.unsubscribe()
+    this.subscription.unsubscribe();
   }
 
-  async handleArchiveOperation() {
-    const res = await this.noteService.archiveNote({"noteIdList": [this.noteDetails?.id], "isArchived": true})
-    // console.log(res)
-    this.dataService.handleNoteOperations(this.noteDetails, "archive")    
-  }
+  async handleIconsClick(operation: any) {
+    if (operation == 'archive') {
+      const res = await this.noteService.archiveNote({
+        noteIdList: [this.noteDetails?.id],
+        isArchived: true,
+      });
+    } else if (operation == "trash" || operation == "restore") {
+      const res = await this.noteService.trashNote({
+        noteIdList: [this.noteDetails?.id],
+        isDeleted: operation == "trash" ? true : false,
+      });
+    }
 
-  async handleTrashOperation() {
-    const res = await this.noteService.trashNote({"noteIdList": [this.noteDetails?.id], "isDeleted": true})
-    console.log(res)
+    this.handleNotesOperations.emit({
+      operation: operation,
+      noteDetails: this.noteDetails,
+    });
   }
 }
