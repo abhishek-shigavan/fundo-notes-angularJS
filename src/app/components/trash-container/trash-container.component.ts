@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/services/data-service/data.service';
 import { NoteService } from 'src/app/services/note-service/note.service';
 
 @Component({
@@ -12,7 +14,8 @@ import { NoteService } from 'src/app/services/note-service/note.service';
 export class TrashContainerComponent implements OnInit {
   trashNotesArray: any = []
   
-  constructor(public noteService: NoteService) {}
+  constructor(public noteService: NoteService, public route: ActivatedRoute, public dataService: DataService) {}
+  
   ngOnInit() {
     this.noteService.getAllTrashNotes().subscribe(
       (response) => {
@@ -22,5 +25,6 @@ export class TrashContainerComponent implements OnInit {
         console.log(err)
       }
     )
+    this.dataService.updateCurrentRoute(this.route.snapshot?.routeConfig?.path || "")
   }
 }
