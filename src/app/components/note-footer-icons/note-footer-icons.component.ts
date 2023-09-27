@@ -43,10 +43,10 @@ export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   }
 
   async handleIconsClick(operation: any) {
-    if (operation == 'archive') {
+    if (operation == 'archive' || operation == "unarchive") {
       const res = await this.noteService.archiveNote({
         noteIdList: [this.noteDetails?.id],
-        isArchived: true,
+        isArchived: operation == "archive" ? true : false,
       });
     } else if (operation == "trash" || operation == "restore") {
       const res = await this.noteService.trashNote({
