@@ -53,6 +53,11 @@ export class NoteFooterIconsComponent implements OnInit, OnDestroy {
         noteIdList: [this.noteDetails?.id],
         isDeleted: operation == "trash" ? true : false,
       });
+    } else {
+      const res = await this.noteService.deleteNote({
+        noteIdList: [this.noteDetails?.id],
+        isDeleted: false
+      })
     }
 
     this.handleNotesOperations.emit({
