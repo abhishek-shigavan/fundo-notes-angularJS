@@ -1,5 +1,5 @@
 <div *ngIf="iconsContainer == 'trash'; else footerIcons">
-    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}">
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" [ngClass]="{'enable-style-class': enableStyle}" (click)="handleIconsClick('delete')">
         <mat-icon svgIcon="delete-forever-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
     </button>
     <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="handleIconsClick('restore')" [ngClass]="{'enable-style-class': enableStyle}">
