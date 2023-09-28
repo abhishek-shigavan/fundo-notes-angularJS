@@ -37,4 +37,7 @@ export class NoteService {
     return await this.httpService.trashNoteCall("/notes/trashNotes", data)
   }
 
+  async deleteNote(data: {}): Promise<any> {
+    return await this.httpService.deleteNoteCall("/notes/deleteForeverNotes", data)
+  }
 }
