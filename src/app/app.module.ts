@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
-
+import { FormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -28,6 +28,7 @@ import { ArchiveContainerComponent } from './components/archive-container/archiv
 import { AddNoteComponent } from './components/add-note/add-note.component';
 import { NoteFooterIconsComponent } from './components/note-footer-icons/note-footer-icons.component';
 import { NoteCardComponent } from './components/note-card/note-card.component';
+import { EditNoteModalComponent } from './components/edit-note-modal/edit-note-modal.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
     AddNoteComponent,
     NoteFooterIconsComponent,
     NoteCardComponent,
+    EditNoteModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { NoteCardComponent } from './components/note-card/note-card.component';
     HttpClientModule,
     FormsModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
