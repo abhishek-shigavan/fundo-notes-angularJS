@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { EditNoteModalComponent } from '../edit-note-modal/edit-note-modal.component';
 
 @Component({
   selector: 'app-note-card',
@@ -13,7 +15,11 @@ export class NoteCardComponent {
   applyStyle = true
   @Input() notesList!: any;
   @Output() handleNotesOperations = new EventEmitter<Object>()
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(noteDetails: Object) {
+    const dialogRef = this.dialog.open(EditNoteModalComponent, {data: {...noteDetails}});
+  }
 
   handleNotesOperation($event: any) {
     this.handleNotesOperations.emit($event)
