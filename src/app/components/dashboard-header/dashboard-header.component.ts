@@ -14,6 +14,9 @@ import { MENU_ICON, SEARCH_ICON, REFRESH_ICON, LIST_VIEW_ICON, SETTING_ICON, OTH
 export class DashboardHeaderComponent implements OnInit, OnDestroy {
   currState!: boolean;
   subscription!: Subscription;
+  email = localStorage.getItem('userEmail')
+  name = localStorage.getItem('userName')
+  avatarName = this.name?.charAt(0)
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private data: DataService) {
     iconRegistry.addSvgIconLiteral('menu-icon', sanitizer.bypassSecurityTrustHtml(MENU_ICON));
