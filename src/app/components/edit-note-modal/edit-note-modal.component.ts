@@ -36,6 +36,6 @@ export class EditNoteModalComponent implements OnInit {
     if (this.data.title !== this.oldTitle || this.data.description !== this.oldDescription) {
       const res = await this.noteService.editNote({...this.data, noteId: this.data?.id})
     }
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 }
