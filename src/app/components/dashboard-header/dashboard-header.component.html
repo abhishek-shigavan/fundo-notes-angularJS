@@ -29,10 +29,18 @@
                 <button mat-icon-button>
                     <mat-icon svgIcon="other-menu-icon" aria-hidden="false" aria-label="Menu SVG icon"></mat-icon>
                 </button>
-                <div class="user-avatar">
+                <div class="user-avatar" [matMenuTriggerFor]="logoutMenu">
                     <span>A</span>
                 </div>
             </div>
+            <mat-menu #logoutMenu="matMenu">
+                <div class="logout-user-avatar-cnt"><span>{{avatarName}}</span></div>
+                <div class="logout-user-email-cnt">
+                    <span class="logout-username">{{name}}</span>
+                    <span class="logout-email">{{email}}</span>
+                </div>                    
+                <button mat-flat-button color="primary">Logout</button>
+            </mat-menu>
         </div>
     </div>
 </div>
