@@ -40,4 +40,8 @@ export class NoteService {
   async deleteNote(data: {}): Promise<any> {
     return await this.httpService.deleteNoteCall("/notes/deleteForeverNotes", data)
   }
+
+  async editNote(data: {}): Promise<any> {
+    return await this.httpService.editNoteCall("/notes/updateNotes", data)
+  }
 }
