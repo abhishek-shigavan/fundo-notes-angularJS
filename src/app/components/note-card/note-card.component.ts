@@ -19,6 +19,9 @@ export class NoteCardComponent {
 
   openDialog(noteDetails: Object) {
     const dialogRef = this.dialog.open(EditNoteModalComponent, {data: {...noteDetails}});
+    dialogRef.afterClosed().subscribe(result => {
+      this.handleNotesOperation({operation: "update", noteDetails: {...result}})
+    });
   }
 
   handleNotesOperation($event: any) {
