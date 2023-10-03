@@ -33,9 +33,12 @@ export class NotesContainerComponent implements OnInit{
   }
 
   updateNotesArray($event: any) {
+    let updatedNotesArray = []
     if($event.operation == 'archive' || $event.operation == 'trash') {
-      const updatedNotesArray = this.notesArray.filter((item: { id: String }) => item.id != $event.noteDetails?.id)
-      this.notesArray = [...updatedNotesArray]
+      updatedNotesArray = this.notesArray.filter((item: { id: String }) => item.id != $event.noteDetails?.id)
+    } else if($event.operation == "update") {
+      updatedNotesArray = this.notesArray.map((item: { id: string }) => {if(item.id === $event.noteDetails?.id) { return item = {...$event.noteDetails}} return item})
     }
+    this.notesArray = [...updatedNotesArray]
   }
 }
