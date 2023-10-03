@@ -1,8 +1,8 @@
 <div *ngFor="let noteDetails of notesList" class="note-card-cnt">
-    <span class="note-title">
+    <span class="note-title" (click)="openDialog(noteDetails)">
         {{noteDetails.title}}
     </span>
-    <span class="note-description">
+    <span class="note-description" (click)="openDialog(noteDetails)">
         {{noteDetails.description}}
     </span>
     <div class="note-card-footer">
