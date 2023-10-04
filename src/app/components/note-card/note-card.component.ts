@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { EditNoteModalComponent } from '../edit-note-modal/edit-note-modal.component';
 import { DataService } from 'src/app/services/data-service/data.service';
@@ -17,12 +17,18 @@ export class NoteCardComponent implements OnInit {
   applyStyle = true
   notesContainer: string = '';
   subscribe!: Subscription;
-  @Input() notesList!: any;
+  searchString: string = ""
+  @Input() notesList!: any
   @Output() handleNotesOperations = new EventEmitter<Object>()
   constructor(public dialog: MatDialog, public dataService: DataService) {}
   
   ngOnInit() {
-    this.subscribe = this.dataService.currentSelectedRoute.subscribe(state => this.notesContainer = state)
+    this.subscribe = combineLatest(this.dataService.currentSelectedRoute, this.dataService.currentSearchText)
+      .subscribe(([selectedRoute, searchText]) => { this.notesContainer = selectedRoute; this.searchString = searchText }) 
+  }
+
+  ngOnDestroy() {
+    this.subscribe.unsubscribe()
   }
 
   openDialog(noteDetails: Object) {
