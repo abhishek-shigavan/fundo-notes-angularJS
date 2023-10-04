@@ -12,7 +12,7 @@
             </div>
             <mat-form-field appearance="outline">
                 <mat-icon matPrefix svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-                <input matInput placeholder="Search">
+                <input matInput placeholder="Search" [(ngModel)]="searchText" (input)="handleSearchText()">
             </mat-form-field>
         </div>
         <div style="display: flex; width: 40%; justify-content: flex-end;">
