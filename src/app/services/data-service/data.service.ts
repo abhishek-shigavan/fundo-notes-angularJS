@@ -9,6 +9,8 @@ export class DataService {
   currentSideNavbarState = this.showSideNavbar.asObservable()
   private selectedRoute = new BehaviorSubject("")
   currentSelectedRoute = this.selectedRoute.asObservable()
+  private searchText = new BehaviorSubject("")
+  currentSearchText = this.searchText.asObservable()
 
   constructor() { }
 
@@ -18,6 +20,10 @@ export class DataService {
 
   updateCurrentRoute(val: string) {
     this.selectedRoute.next(val)
+  }
+
+  updateSearchText(val: string) {
+    this.searchText.next(val)
   }
 
   handleNoteOperations(note: Object, operation: string) {
