@@ -18,6 +18,7 @@ export class DashboardHeaderComponent implements OnInit, OnDestroy {
   email = localStorage.getItem('userEmail')
   name = localStorage.getItem('userName')
   avatarName = this.name?.charAt(0)
+  searchText: string = ""
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private data: DataService, public router: Router) {
     iconRegistry.addSvgIconLiteral('menu-icon', sanitizer.bypassSecurityTrustHtml(MENU_ICON));
@@ -43,5 +44,9 @@ export class DashboardHeaderComponent implements OnInit, OnDestroy {
   handleLogout() {
     localStorage.clear()
     this.router.navigate(["/login"])
+  }
+
+  handleSearchText = () => {
+    this.data.updateSearchText(this.searchText)    
   }
 }
