@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data-service/data.service';
 import { MENU_ICON, SEARCH_ICON, REFRESH_ICON, LIST_VIEW_ICON, SETTING_ICON, OTHER_MENU_ICON } from 'src/assets/svg-icons';
@@ -18,7 +19,7 @@ export class DashboardHeaderComponent implements OnInit, OnDestroy {
   name = localStorage.getItem('userName')
   avatarName = this.name?.charAt(0)
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private data: DataService) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private data: DataService, public router: Router) {
     iconRegistry.addSvgIconLiteral('menu-icon', sanitizer.bypassSecurityTrustHtml(MENU_ICON));
     iconRegistry.addSvgIconLiteral('search-icon', sanitizer.bypassSecurityTrustHtml(SEARCH_ICON));
     iconRegistry.addSvgIconLiteral('refresh-icon', sanitizer.bypassSecurityTrustHtml(REFRESH_ICON));
@@ -37,5 +38,10 @@ export class DashboardHeaderComponent implements OnInit, OnDestroy {
 
   toggleSideNavbar = () => {
     this.data.toggleSideNavbar(!this.currState)
+  }
+
+  handleLogout() {
+    localStorage.clear()
+    this.router.navigate(["/login"])
   }
 }
