@@ -1,4 +1,4 @@
-<div *ngFor="let noteDetails of notesList" class="note-card-cnt">
+<div *ngFor="let noteDetails of notesList | searchPipe: searchString" class="note-card-cnt">
     <span class="note-title" (click)="openDialog(noteDetails)">
         {{noteDetails.title}}
     </span>
