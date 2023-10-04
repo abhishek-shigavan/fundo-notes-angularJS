@@ -29,6 +29,7 @@ import { AddNoteComponent } from './components/add-note/add-note.component';
 import { NoteFooterIconsComponent } from './components/note-footer-icons/note-footer-icons.component';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { EditNoteModalComponent } from './components/edit-note-modal/edit-note-modal.component';
+import { SearchNotePipeComponent } from './components/search-note-pipe/search-note-pipe.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { EditNoteModalComponent } from './components/edit-note-modal/edit-note-m
     NoteFooterIconsComponent,
     NoteCardComponent,
     EditNoteModalComponent,
+    SearchNotePipeComponent,
   ],
   imports: [
     BrowserModule,
