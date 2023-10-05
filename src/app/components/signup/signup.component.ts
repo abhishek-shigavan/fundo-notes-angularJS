@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { MatIconRegistry } from '@angular/material/icon';
 import { MustMatch } from './must-match.validator';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private signupService: UserService) {
+  constructor(private formBuilder: FormBuilder, private signupService: UserService, public router: Router) {
     this.registerForm = this.formBuilder.group(
       {
         fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -78,6 +79,8 @@ export class SignupComponent implements OnInit {
     const { fName, lName, userName, newPassword } = this.registerForm.value
 
     const res = await this.signupService.signup({ "firstName": fName, "lastName": lName, "email": userName, "password": newPassword, "service": "advance" })
-    console.log("res : ", res)
+    if(res?.data) {
+      this.router.navigate(["/login"])
+    }
   }
 }
