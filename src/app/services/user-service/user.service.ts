@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http-service/http.service';
+import { shareReplay } from 'rxjs';
 
 interface LoginResponse {
   id?: string,
@@ -18,7 +19,7 @@ export class UserService {
     try {
       const res: LoginResponse = await this.httpService.loginSignupCall("/user/login", credentials) || {}
       localStorage.setItem("accessToken", res?.id || "")
-      localStorage.setItem("userName", res?.firstName || "" + res?.lastName || "" )
+      localStorage.setItem("userName", `${res?.firstName} ${res?.lastName}` || "" )
       localStorage.setItem("userEmail", res?.email || "")
       return res
     } catch (error) {
