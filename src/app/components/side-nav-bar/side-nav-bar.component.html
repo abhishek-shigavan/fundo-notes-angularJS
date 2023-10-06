@@ -1,6 +1,6 @@
 <mat-drawer-container class="side-nav-bar-outer-cnt" hasBackdrop="false">
     <mat-drawer class="side-nav-drawer-cnt" mode="over" [opened]="showSideNavbar">
-        <div>
+        <div [class.active-drawer-item]="activeRoute == 'notes'" (click)="handleNavigation('/notes')">
             <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="Note SVG icon"></mat-icon>
             <span>Note</span>
         </div>
@@ -12,11 +12,11 @@
             <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="Edit SVG icon"></mat-icon>
             <span>Edit Label</span>
         </div>
-        <div>
+        <div [class.active-drawer-item]="activeRoute == 'archive'" (click)="handleNavigation('/archive')">
             <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Archive SVG icon"></mat-icon>
             <span>Archive</span>
         </div>
-        <div>
+        <div [class.active-drawer-item]="activeRoute == 'trash'" (click)="handleNavigation('/trash')">
             <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="Trash SVG icon"></mat-icon>
             <span>Trash</span>
         </div>
