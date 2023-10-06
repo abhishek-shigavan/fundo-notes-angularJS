@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data-service/data.service';
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class SideNavBarComponent implements OnInit, OnDestroy {
   showSideNavbar!: boolean;
   subscription!: Subscription;
+  activeRoute: string = 'notes'
 
   constructor(private data: DataService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, public router: Router) {
      iconRegistry.addSvgIconLiteral("note-icon", sanitizer.bypassSecurityTrustHtml(NOTE_ICON))
@@ -24,7 +25,8 @@ export class SideNavBarComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
-    this.subscription = this.data.currentSideNavbarState.subscribe(currState => this.showSideNavbar = currState)
+    this.subscription = combineLatest(this.data.currentSideNavbarState, this.data.currentSelectedRoute)
+    .subscribe(([showSideNavbar, selectedRoute]) => { this.showSideNavbar = showSideNavbar; this.activeRoute = selectedRoute }) 
   }
   
   ngOnDestroy() {
