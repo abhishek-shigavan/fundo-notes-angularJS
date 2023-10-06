@@ -16,10 +16,20 @@
             margin-left: 20px;
         }
         &:hover {
-            background-color: #FEEFC3;
+            cursor: pointer;
+            background-color: #EFEFF1;
             border-top-right-radius: 50px;
             border-bottom-right-radius: 50px;
         }
+    }
+}
+.active-drawer-item {
+    background-color: #FEEFC3;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+    &:hover {
+        background-color: #FEEFC3 !important;   
     }
 }
 .icon-cnt {
