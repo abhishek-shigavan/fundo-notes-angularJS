@@ -24,7 +24,7 @@
     <mat-drawer-content>
         <div class="drawer-content-cnt">
             <div class="side-navbar-cnt">
-                <div>
+                <div [class.active-icon-cnt]="activeRoute == 'notes'">
                     <button mat-icon-button (click)="handleNavigation('/notes')">
                         <mat-icon svgIcon="note-icon" aria-hidden="false" aria-label="Note SVG icon"></mat-icon>
                     </button>
@@ -39,12 +39,12 @@
                         <mat-icon svgIcon="edit-icon" aria-hidden="false" aria-label="Edit SVG icon"></mat-icon>
                     </button>
                 </div>
-                <div>
+                <div [class.active-icon-cnt]="activeRoute == 'archive'">
                     <button mat-icon-button (click)="handleNavigation('/archive')">
                         <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Archive SVG icon"></mat-icon>
                     </button>
                 </div>
-                <div>
+                <div [class.active-icon-cnt]="activeRoute == 'trash'">
                     <button mat-icon-button (click)="handleNavigation('/trash')">
                         <mat-icon svgIcon="trash-icon" aria-hidden="false" aria-label="Trash SVG icon"></mat-icon>
                     </button>
