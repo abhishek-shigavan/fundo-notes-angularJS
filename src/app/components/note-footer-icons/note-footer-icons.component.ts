@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -11,7 +10,7 @@ import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_
   selector: 'app-note-footer-icons',
   templateUrl: './note-footer-icons.component.html',
   styleUrls: ['./note-footer-icons.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   @Input() enableStyle!: boolean;
