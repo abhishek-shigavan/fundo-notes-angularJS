@@ -29,8 +29,8 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  openFailedLoginMsg() {
-    this.snackBar.open('Invalid Username / Password', "",{
+  openFailedLoginMsg(msg = "") {
+    this.snackBar.open(msg, "",{
       duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
@@ -46,10 +46,13 @@ export class LoginComponent {
     const { userName, password } = this.loginForm.value
     const res = await this.loginService.login({ "email": userName, "password": password })
     if(res?.status) {
-      this.openFailedLoginMsg()
+      this.openFailedLoginMsg('Invalid Username / Password')
       this.loginForm.reset()
     }
 
-    if(res?.id) this.router.navigate(["dashboard/notes"]) 
+    if(res?.id) {
+      this.openFailedLoginMsg("Login Sucessfully...!!!")
+      this.router.navigate(["dashboard/notes"])
+    }
   }
 }
