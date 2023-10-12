@@ -1,36 +1,36 @@
 <div *ngIf="iconsContainer == 'trash'; else footerIcons">
-    <button mat-icon-button aria-label="delete forever button" (click)="handleIconsClick('delete')">
-        <mat-icon svgIcon="delete-forever-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+    <button mat-icon-button aria-label="delete forever button" matTooltip="Delete Forever" (click)="handleIconsClick('delete')">
+        <mat-icon svgIcon="delete-forever-icon" aria-hidden="false" aria-label="delete forever icon"></mat-icon>
     </button>
-    <button mat-icon-button aria-label="restore button" (click)="handleIconsClick('restore')">
-        <mat-icon svgIcon="restore-icon" aria-hidden="false" aria-label="Re SVG icon"></mat-icon>
+    <button mat-icon-button aria-label="restore button" matTooltip="Restore" (click)="handleIconsClick('restore')">
+        <mat-icon svgIcon="restore-icon" aria-hidden="false" aria-label="restore icon"></mat-icon>
     </button>
 </div>
 
 <ng-template #footerIcons>
     <div>
-        <button mat-icon-button aria-label="reminder button">
-            <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button mat-icon-button aria-label="reminder button" matTooltip="Reminder">
+            <mat-icon svgIcon="reminder-icon" aria-hidden="false" aria-label="reminder icon"></mat-icon>
         </button>
-        <button mat-icon-button aria-label="collabrator button">
-            <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button mat-icon-button aria-label="collabrator button" matTooltip="Collabrator">
+            <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="collabrator icon"></mat-icon>
         </button>
-        <button mat-icon-button aria-label="color button">
-            <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button mat-icon-button aria-label="color button" matTooltip="Background Color Options">
+            <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="color button icon"></mat-icon>
         </button>
-        <button mat-icon-button aria-label="img button">
-            <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button mat-icon-button aria-label="img button" matTooltip="Add Image">
+            <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="add image icon"></mat-icon>
         </button>
-        <button *ngIf="iconsContainer == 'archive'; else archiveIcon" mat-icon-button aria-label="unarchive button" (click)="handleIconsClick('unarchive')">
-            <mat-icon svgIcon="unarchive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button *ngIf="iconsContainer == 'archive'; else archiveIcon" mat-icon-button aria-label="unarchive button" matTooltip="Unarchive" (click)="handleIconsClick('unarchive')">
+            <mat-icon svgIcon="unarchive-icon" aria-hidden="false" aria-label="unarchive icon"></mat-icon>
         </button>
         <ng-template #archiveIcon>
-            <button mat-icon-button aria-label="archive button" (click)="handleIconsClick('archive')">
-                <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            <button mat-icon-button aria-label="archive button" matTooltip="Archive" (click)="handleIconsClick('archive')">
+                <mat-icon svgIcon="archive-icon" aria-hidden="false" aria-label="archive icon"></mat-icon>
             </button>
         </ng-template>
-        <button mat-icon-button aria-label="more button" [matMenuTriggerFor]="menu">
-            <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+        <button mat-icon-button aria-label="more button" matTooltip="more" [matMenuTriggerFor]="menu">
+            <mat-icon svgIcon="more-icon" aria-hidden="false" aria-label="menu icon"></mat-icon>
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="handleIconsClick('trash')">Delete note</button>
