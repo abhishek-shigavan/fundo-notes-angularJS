@@ -15,15 +15,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private loginService: UserService, public router: Router) {
     this.loginForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
