@@ -10,7 +10,9 @@ import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_
   selector: 'app-note-footer-icons',
   templateUrl: './note-footer-icons.component.html',
   styleUrls: ['./note-footer-icons.component.scss'],
-  // encapsulation: ViewEncapsulation.None,
+  host: {
+    class: 'app-footer-icons-cnt'
+  }
 })
 export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   @Input() enableStyle!: boolean;
