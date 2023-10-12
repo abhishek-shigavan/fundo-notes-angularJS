@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-//import { DomSanitizer } from '@angular/platform-browser';
-//import { MatIconRegistry } from '@angular/material/icon';
 import { MustMatch } from './must-match.validator';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -13,15 +12,10 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class SignupComponent implements OnInit {
-  /*constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon('hide-pass', sanitizer.bypassSecurityTrustResourceUrl('https://icons8.com/icon/986/eye'));
-    iconRegistry.addSvgIcon('show-pass', sanitizer.bypassSecurityTrustResourceUrl('https://icons8.com/icon/33916/hide'));  
-  }*/
-
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private signupService: UserService, public router: Router) {
+  constructor(private formBuilder: FormBuilder, private signupService: UserService, public router: Router, public snackBar: MatSnackBar) {
     this.registerForm = this.formBuilder.group(
       {
         fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -69,18 +63,28 @@ export class SignupComponent implements OnInit {
     return this.registerForm.get('confirmPassword');
   }
 
+  openIncorrectValueMsg(msg = "") {
+    this.snackBar.open(msg, "",{
+      duration: 5000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
+
   async handleSignUp() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.registerForm.invalid) {
+      this.openIncorrectValueMsg('Please enter correct values')
       return;
     }
 
     const { fName, lName, userName, newPassword } = this.registerForm.value
 
     const res = await this.signupService.signup({ "firstName": fName, "lastName": lName, "email": userName, "password": newPassword, "service": "advance" })
+    if(res?.status == 422) this.openIncorrectValueMsg("Email Id is already registered..!! Use different mail id / Sign in instead") 
     if(res?.data) {
+      this.openIncorrectValueMsg("Signup Sucessful..!!")
       this.router.navigate(["/login"])
-    }
+    }  
   }
 }
