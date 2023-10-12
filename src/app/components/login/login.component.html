@@ -13,19 +13,17 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Email or phone</mat-label>
                     <input matInput placeholder="Email or phone" formControlName="userName">
+                    <mat-error *ngIf="userName?.errors?.['required']">Email is required</mat-error>
+                    <mat-error *ngIf="userName?.errors?.['email']">Incorrect Email Format</mat-error>
                 </mat-form-field>
-                <div *ngIf="submitted && userName?.errors">
-                    <span *ngIf="userName?.errors?.['required']">Email is required</span>
-                </div>
             </div>
             <div class="login-input">
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
                     <input matInput placeholder="Enter password" formControlName="password">
+                    <mat-error *ngIf="password?.errors?.['required']">Password is required</mat-error>
+                    <mat-error *ngIf="password?.errors?.['minlength']">Minimum 6 characters</mat-error>
                 </mat-form-field>
-                <div *ngIf="submitted && password?.errors">
-                    <span *ngIf="password?.errors?.['required']">Password is required</span>
-                </div>
                 <button class="forgot-pass-btn" mat-button color="primary">Forgot password</button>
             </div>
 
