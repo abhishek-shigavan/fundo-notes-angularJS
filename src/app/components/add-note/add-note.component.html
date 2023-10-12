@@ -2,14 +2,14 @@
     <div class="add-note-inner-cnt">
         <input placeholder="Take a note..." (click)="handleNoteClick()" />
         <div>
-            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                <mat-icon svgIcon="tick-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            <button mat-icon-button aria-label="tick icon button">
+                <mat-icon svgIcon="tick-icon" aria-hidden="false" aria-label="tick icon"></mat-icon>
             </button>
-            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                <mat-icon svgIcon="brush-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            <button mat-icon-button aria-label="brush icon button">
+                <mat-icon svgIcon="brush-icon" aria-hidden="false" aria-label="brush icon"></mat-icon>
             </button>
-            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            <button mat-icon-button aria-label="image button">
+                <mat-icon svgIcon="img-icon" aria-hidden="false" aria-label="image icon"></mat-icon>
             </button>
         </div>
     </div>
@@ -19,8 +19,8 @@
     <div class="add-note-main-cnt">
         <div class="add-note-inner-cnt" style="width: initial">
             <input [(ngModel)]="title" placeholder="Title"  />
-            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="Example thumbs up SVG icon"></mat-icon>
+            <button mat-icon-button aria-label="pin icon" matTooltip="Pin">
+                <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin icon"></mat-icon>
             </button>
         </div>
         <div class="note-details-cnt">
@@ -30,12 +30,10 @@
             <div>
                 <app-note-footer-icons></app-note-footer-icons>
                 <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon svgIcon="undo-icon" aria-hidden="false"
-                        aria-label="Example thumbs up SVG icon"></mat-icon>
+                    <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="undo icon" matTooltip="Undo"></mat-icon>
                 </button>
-                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <mat-icon svgIcon="redo-icon" aria-hidden="false"
-                        aria-label="Example thumbs up SVG icon"></mat-icon>
+                <button mat-icon-button aria-label="redo icon" matTooltip="Redo">
+                    <mat-icon svgIcon="redo-icon" aria-hidden="false" aria-label="redo icon"></mat-icon>
                 </button>
             </div>
             <button mat-button (click)="handleCloseNote()">Close</button>
