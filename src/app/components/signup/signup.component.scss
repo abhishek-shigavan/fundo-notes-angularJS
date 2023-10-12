@@ -14,9 +14,7 @@
 .signup-main-cnt {
     width: 45%;
     height: auto;
-    // margin: auto;
     display: flex;
-    // flex-direction: column;
     justify-content: space-between;
     border: #A9ACAA 1px solid;
     border-radius: 8px;
@@ -25,14 +23,11 @@
 .signup-form-cnt {
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     width: 55%;
 }
 .signup-title-cnt {
     display: flex;
     flex-direction: column;
-    // height: 20%;
-    // justify-content: space-between;   
 }
 .signup-title {
     font-size: 30px;
@@ -47,11 +42,9 @@
     line-height: initial;
 }
 .signup-input-cnt {
-    // height: 60%;
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
-    gap: 30px;
+    gap: 20px;
     margin: 40px 0px;
 }
 .details-input-cnt {
@@ -77,7 +70,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // height: 20%;
     margin-top: 20px;
 }
 .signup-img-cnt {
@@ -92,14 +84,15 @@
         text-align: center;
     }
 }
-.mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
-    /* Add your custom styles here */
-    /* For example, let's change the background color to yellow */
-    /* Add any other styles you need */
-    display: none;
+.mat-mdc-form-field-hint-wrapper {
+    width: 400px;
+}
+.mat-mdc-form-field-hint.mat-mdc-form-field-bottom-align {
+    font-size: 14px;
+    width: 400px;
 }
 .mat-mdc-form-field-hint {
-    margin-top: 8px;
+    margin-top: 11px;
 }
 .signup-footer-cnt {
     display: flex;
