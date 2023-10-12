@@ -1,6 +1,5 @@
 <div class="signup-outer-cnt">
     <div class="signup-sub-outer-cnt">
-
     <div class="signup-main-cnt">
         <form [formGroup]="registerForm" (ngSubmit)="handleSignUp()" class="signup-form-cnt">
             <div class="signup-title-cnt">
@@ -28,8 +27,8 @@
                         <input formControlName="userName" matInput>
                         <mat-error *ngIf="userName?.errors?.['required']">Username is required</mat-error>
                         <mat-error *ngIf="userName?.errors?.['email']">Enter a valid mail</mat-error>
+                        <mat-hint class="hint">You can use letters, numbers & periods</mat-hint>
                     </mat-form-field>
-                    <span class="hint">You can use letters, numbers & periods</span>
                 </div>
                 <div class="signup-password-cnt">
                     <div class="details-input-cnt">
@@ -38,12 +37,12 @@
                             <input formControlName="newPassword" matInput placeholder="Password">
                             <mat-error *ngIf="newPassword?.errors?.['required']">Password is required</mat-error>
                             <mat-error *ngIf="newPassword?.errors?.['minlength']">Minimum 6 characters</mat-error>
+                            <mat-hint class="hint">Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint>
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="details-input">
                             <mat-label>Confirm</mat-label>
                             <input formControlName="confirmPassword" matInput placeholder="Confirm">
-                            <mat-error *ngIf="confirmPassword?.errors?.['required']">Confirm Password is
-                                required</mat-error>
+                            <mat-error *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required</mat-error>
                             <mat-error *ngIf="confirmPassword?.errors?.['mustMatch']">Passwords must match</mat-error>
                         </mat-form-field>
                         <!-- 
@@ -55,7 +54,6 @@
                         </div>
                         -->
                     </div>
-                    <span class="hint">Use 8 or more characters with a mix of letters, numbers & symbols</span>
                 </div>
             </div>
             <div class="signup-btn-cnt">
@@ -70,5 +68,4 @@
     </div>
     <app-login-signup-footer class="signup-footer-cnt"></app-login-signup-footer>
 </div>
-
 </div>
