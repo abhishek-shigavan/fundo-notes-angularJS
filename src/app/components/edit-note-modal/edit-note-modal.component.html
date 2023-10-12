@@ -1,7 +1,7 @@
 <div class="edit-note-main-cnt">
   <div class="edit-note-inner-cnt">
       <input [(ngModel)]="data.title" placeholder="Title"  />
-      <button mat-icon-button aria-label="pin button">
+      <button mat-icon-button aria-label="pin button" matTooltip="Pin">
           <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin SVG icon"></mat-icon>
       </button>
   </div>
@@ -11,10 +11,10 @@
   <div class="edit-note-footer-cnt">
       <div>
           <app-note-footer-icons></app-note-footer-icons>
-          <button mat-icon-button aria-label="undo icon">
+          <button mat-icon-button aria-label="undo icon" matTooltip="Undo">
               <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="undo SVG icon"></mat-icon>
           </button>
-          <button mat-icon-button aria-label="redo icon">
+          <button mat-icon-button aria-label="redo icon" matTooltip="Redo">
               <mat-icon svgIcon="redo-icon" aria-hidden="false" aria-label="redo SVG icon"></mat-icon>
           </button>
       </div>
