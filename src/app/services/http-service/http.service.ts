@@ -13,6 +13,7 @@ export class HttpService {
     'Accept': "application/json",
     Authorization: localStorage.getItem('accessToken') || ""
   })
+  getNoteQueryParams: any;
 
   constructor(private http: HttpClient) { }
 
@@ -41,7 +42,8 @@ export class HttpService {
   }
 
   getNotesCall(endpoint: string): Observable<any> {
-    return this.http.get(this.baseUrl+endpoint+`?${this.queryParams.toString()}`).pipe(
+    this.getNoteQueryParams = new HttpParams().set("access_token", localStorage.getItem('accessToken') || "")
+    return this.http.get(this.baseUrl+endpoint+`?${this.getNoteQueryParams.toString()}`, {headers: this.authHeader}).pipe(
       catchError((error) => {
         return throwError(error);
       })
