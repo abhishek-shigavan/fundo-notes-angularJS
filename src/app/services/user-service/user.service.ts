@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http-service/http.service';
-import { shareReplay } from 'rxjs';
 
 interface LoginResponse {
   id?: string,
   firstName?: string,
   lastName?: string,
-  email?: string
+  email?: string,
+  status?: number,
 }
 
 @Injectable({
@@ -25,15 +25,6 @@ export class UserService {
     } catch (error) {
       return error || {}
     }
-  /*  
-    this.httpService.loginCall("/user/login",credentials).subscribe(
-        (response) => {
-          return response
-        },
-        (error) => {
-          return error
-        }
-      );*/
   }
 
   async signup(data: {}): Promise<any> {
