@@ -3,6 +3,10 @@
     width: 34px;
     height: 34px;
 }
+::ng-deep .app-footer-icons-cnt {
+    display: flex;
+    align-items: center;
+}
 :host ::ng-deep .mat-mdc-icon-button.mat-mdc-button-touch-target {
     height: 24px;
     width: 24px;
