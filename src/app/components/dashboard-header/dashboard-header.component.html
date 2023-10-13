@@ -10,10 +10,10 @@
                     <span>Fundo</span>
                 </div>
             </div>
-            <mat-form-field appearance="outline">
-                <mat-icon matPrefix svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
-                <input matInput placeholder="Search" [(ngModel)]="searchText" (input)="handleSearchText()">
-            </mat-form-field>
+            <div class="note-search-cnt">
+                <mat-icon style="width: 18px !important; height: 18px !important" svgIcon="search-icon" aria-hidden="false" aria-label="Search SVG icon"></mat-icon>
+                <input placeholder="Search" [(ngModel)]="searchText" (input)="handleSearchText()">
+            </div>
         </div>
         <div style="display: flex; width: 40%; justify-content: flex-end;">
             <button mat-icon-button>
@@ -34,12 +34,14 @@
                 </div>
             </div>
             <mat-menu #logoutMenu="matMenu">
-                <div class="logout-user-avatar-cnt"><span>{{avatarName}}</span></div>
-                <div class="logout-user-email-cnt">
-                    <span class="logout-username">{{name}}</span>
-                    <span class="logout-email">{{email}}</span>
-                </div>                    
-                <button mat-flat-button color="primary" (click)="handleLogout()">Logout</button>
+                <div class="logout-cnt">
+                    <div class="logout-user-avatar-cnt"><span>{{avatarName}}</span></div>
+                    <div class="logout-user-email-cnt">
+                        <span class="logout-username">{{name}}</span>
+                        <span class="logout-email">{{email}}</span>
+                    </div>                    
+                    <button mat-flat-button color="primary" (click)="handleLogout()">Logout</button>
+                </div>
             </mat-menu>
         </div>
     </div>
