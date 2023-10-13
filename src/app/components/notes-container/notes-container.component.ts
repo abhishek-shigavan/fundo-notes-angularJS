@@ -38,6 +38,8 @@ export class NotesContainerComponent implements OnInit{
       updatedNotesArray = this.notesArray.filter((item: { id: String }) => item.id != $event.noteDetails?.id)
     } else if($event.operation == "update") {
       updatedNotesArray = this.notesArray.map((item: { id: string }) => {if(item.id === $event.noteDetails?.id) { return item = {...$event.noteDetails}} return item})
+    } else if ($event.operation.includes('#')) {
+      updatedNotesArray = this.notesArray.map((item: { id: string}) => {if(item.id === $event.noteDetails?.id) { return item = {...$event.noteDetails, color: $event.operation}} return item})
     }
     this.notesArray = [...updatedNotesArray]
   }
