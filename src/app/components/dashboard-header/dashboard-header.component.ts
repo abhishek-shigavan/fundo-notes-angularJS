@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -10,14 +10,13 @@ import { MENU_ICON, SEARCH_ICON, REFRESH_ICON, LIST_VIEW_ICON, SETTING_ICON, OTH
   selector: 'app-dashboard-header',
   templateUrl: './dashboard-header.component.html',
   styleUrls: ['./dashboard-header.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
 export class DashboardHeaderComponent implements OnInit, OnDestroy {
   currState!: boolean;
   subscription!: Subscription;
   email = localStorage.getItem('userEmail')
   name = localStorage.getItem('userName')
-  avatarName = this.name?.charAt(0)
+  avatarName = this.name?.charAt(0).toUpperCase()
   searchText: string = ""
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private data: DataService, public router: Router) {
