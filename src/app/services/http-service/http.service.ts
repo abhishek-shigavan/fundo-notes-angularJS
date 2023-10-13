@@ -84,7 +84,7 @@ export class HttpService {
 
   async colorChangeCall(endpoint: string, data: Object): Promise<any> {
     try {
-      return await this.http.post(this.baseUrl+endpoint+`${this.queryParams.toString()}`, data, {headers: this.authHeader}).toPromise()
+      return await this.http.post(this.baseUrl+endpoint+`?${this.queryParams.toString()}`, data, {headers: this.authHeader}).toPromise()
     } catch (error) {
       return error
     }
