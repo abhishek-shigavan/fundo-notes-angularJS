@@ -44,4 +44,8 @@ export class NoteService {
   async editNote(data: {}): Promise<any> {
     return await this.httpService.editNoteCall("/notes/updateNotes", data)
   }
+
+  async colorChange(data: {}): Promise<any> {
+    return await this.httpService.colorChangeCall("/notes/changesColorNotes", data)
+  }
 }
