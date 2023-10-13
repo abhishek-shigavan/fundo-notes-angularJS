@@ -37,6 +37,8 @@ export class ArchiveContainerComponent implements OnInit {
       updatedArchiveNotes = this.archiveNotesArray.filter((item : { id : string }) => item.id != $event.noteDetails.id)
     } else if($event.operation == "update") {
       updatedArchiveNotes = this.archiveNotesArray.map((item: { id: string }) => {if(item.id === $event.noteDetails?.id) { return item = {...$event.noteDetails}} return item})
+    } else if ($event.operation.includes('#')) {
+      updatedArchiveNotes = this.archiveNotesArray.map((item: { id: string}) => {if(item.id === $event.noteDetails?.id) { return item = {...$event.noteDetails, color: $event.operation}} return item})
     }  
     this.archiveNotesArray = [...updatedArchiveNotes]
   }
