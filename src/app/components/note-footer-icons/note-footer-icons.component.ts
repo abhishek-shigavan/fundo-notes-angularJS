@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
@@ -54,10 +54,15 @@ export class NoteFooterIconsComponent implements OnInit, OnDestroy {
         noteIdList: [this.noteDetails?.id],
         isDeleted: operation == "trash" ? true : false,
       });
-    } else {
+    } else if (operation == 'delete') {
       const res = await this.noteService.deleteNote({
         noteIdList: [this.noteDetails?.id],
         isDeleted: false
+      })
+    } else {
+      const res = await this.noteService.colorChange({
+        noteIdList: [this.noteDetails?.id],
+        color: operation
       })
     }
 
