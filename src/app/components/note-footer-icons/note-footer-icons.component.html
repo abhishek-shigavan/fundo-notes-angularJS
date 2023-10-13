@@ -15,7 +15,7 @@
         <button mat-icon-button aria-label="collabrator button" matTooltip="Collabrator">
             <mat-icon svgIcon="collabrator-icon" aria-hidden="false" aria-label="collabrator icon"></mat-icon>
         </button>
-        <button mat-icon-button aria-label="color button" matTooltip="Background Color Options">
+        <button mat-icon-button aria-label="color button" matTooltip="Background Color Options" [matMenuTriggerFor]="colorPalate">
             <mat-icon svgIcon="color-palatte-icon" aria-hidden="false" aria-label="color button icon"></mat-icon>
         </button>
         <button mat-icon-button aria-label="img button" matTooltip="Add Image">
@@ -37,6 +37,22 @@
             <button mat-menu-item>Add label</button>
             <button mat-menu-item>Add drawing</button>
             <button mat-menu-item>Make a copy</button>
+        </mat-menu>
+        <mat-menu #colorPalate="matMenu">
+            <div class="color-palate-cnt">    
+                <div class="col1" matTooltip="Default"></div>
+                <div class="col2" matTooltip="Coral"></div>
+                <div class="col3" matTooltip="Peach"></div>
+                <div class="col4" matTooltip="Sand"></div>
+                <div class="col5" matTooltip="Mint"></div>
+                <div class="col6" matTooltip="Sage"></div>
+                <div class="col7" matTooltip="Fog"></div>
+                <div class="col8" matTooltip="Storm"></div>
+                <div class="col9" matTooltip="Dusk"></div>
+                <div class="col10" matTooltip="Blossom"></div>
+                <div class="col11" matTooltip="Clay"></div>
+                <div class="col12" matTooltip="Chalk"></div>           
+            </div>
         </mat-menu>
     </div>
 </ng-template>
