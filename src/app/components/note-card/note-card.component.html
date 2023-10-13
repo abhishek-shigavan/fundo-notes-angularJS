@@ -1,4 +1,4 @@
-<div *ngFor="let noteDetails of notesList | searchPipe: searchString" class="note-card-cnt">
+<div *ngFor="let noteDetails of notesList | searchPipe: searchString" class="note-card-cnt" [style.background-color]="noteDetails.color || '#FFFFFF'">
     <span class="note-title" (click)="openDialog(noteDetails)">
         {{noteDetails.title}}
     </span>
