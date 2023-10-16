@@ -13,6 +13,9 @@ export class AddNoteComponent {
   expand = false
   title: string = ""
   description: string = ""
+  archive: boolean = false
+  color: string = "#FFFFFF"
+  mode: string = "AddNote"
 
   @Output() addNoteInNotesList = new EventEmitter<Object>()
 
@@ -37,6 +40,14 @@ export class AddNoteComponent {
     }
   }
 
+  handleAddNoteFooterOperations(operation: any) {
+    if (operation == "archive") {
+      this.archive = true
+    } else if (operation.includes('#')) {
+      this.color = operation
+    }
+  }
+
   async handleCloseNote() {
     this.expand = !this.expand
 
@@ -45,12 +56,11 @@ export class AddNoteComponent {
       "title" : this.title,
       "description" : this.description,
       "isPined": false,
-      "isArchived": false,
-      "color": "",
+      "isArchived": this.archive,
+      "color": this.color,
       "reminder": "",
     }
     const res = await this.noteService.addNote(noteObj)
-    console.log("note obj : ", res)
     this.addNoteInNotesList.emit(res?.status?.details)
   }
 }
