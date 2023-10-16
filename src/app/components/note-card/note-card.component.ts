@@ -35,7 +35,7 @@ export class NoteCardComponent implements OnInit {
     if (this.notesContainer == "trash") return
     const dialogRef = this.dialog.open(EditNoteModalComponent, {data: {...noteDetails}});
     dialogRef.afterClosed().subscribe(result => {
-      this.handleNotesOperation({operation: "update", noteDetails: {...result}})
+      this.handleNotesOperation({operation: result.operation, noteDetails: {...result.noteData}})
     });
   }
 
