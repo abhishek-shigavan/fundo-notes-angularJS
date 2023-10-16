@@ -1,16 +1,16 @@
-<div class="edit-note-main-cnt">
+<div class="edit-note-main-cnt" [style.background-color]="data.color">
   <div class="edit-note-inner-cnt">
-      <input [(ngModel)]="data.title" placeholder="Title"  />
+      <input [(ngModel)]="data.title" placeholder="Title" [style.background-color]="data.color"/>
       <button mat-icon-button aria-label="pin button" matTooltip="Pin">
           <mat-icon svgIcon="pin-icon" aria-hidden="false" aria-label="pin SVG icon"></mat-icon>
       </button>
   </div>
   <div class="edit-note-details-cnt">
-      <textarea [(ngModel)]="data.description" (input)="adjustTextareaHeight()" placeholder="Take a note..."></textarea>
+      <textarea [(ngModel)]="data.description" (input)="adjustTextareaHeight()" placeholder="Take a note..." [style.background-color]="data.color"></textarea>
   </div>
   <div class="edit-note-footer-cnt">
       <div>
-          <app-note-footer-icons></app-note-footer-icons>
+          <app-note-footer-icons [currMode]="mode" (handleFooterForAddEditNote)="handleEditNoteFooterOperations($event)"></app-note-footer-icons>
           <button mat-icon-button aria-label="undo icon" matTooltip="Undo">
               <mat-icon svgIcon="undo-icon" aria-hidden="false" aria-label="undo SVG icon"></mat-icon>
           </button>
