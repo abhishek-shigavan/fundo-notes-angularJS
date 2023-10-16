@@ -17,7 +17,9 @@ import { REMINDER_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, IMG_ICON, ARCHIVE_
 export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   @Input() enableStyle!: boolean;
   @Input() noteDetails: any;
+  @Input() currMode: string = "";
   @Output() handleNotesOperations = new EventEmitter<Object>();
+  @Output() handleFooterForAddEditNote = new EventEmitter<string>();
   iconsContainer: string = '';
   subscription!: Subscription;
 
@@ -44,6 +46,11 @@ export class NoteFooterIconsComponent implements OnInit, OnDestroy {
   }
 
   async handleIconsClick(operation: any) {
+    if (this.currMode == "AddNote" || this.currMode == "EditNote") {
+      this.handleFooterForAddEditNote.emit(operation)
+      return
+    }
+
     if (operation == 'archive' || operation == "unarchive") {
       const res = await this.noteService.archiveNote({
         noteIdList: [this.noteDetails?.id],
