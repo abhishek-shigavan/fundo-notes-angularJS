@@ -29,6 +29,7 @@ export class NotesContainerComponent implements OnInit{
   }
 
   addNoteInNotesArray($event: any) {
+    if($event.isArchived) return 
     this.notesArray = [$event, ...this.notesArray]
   }
 
