@@ -1,8 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatIconRegistry } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user-service/user.service';
+import { HIDE_PASS_ICON, SHOW_PASS_ICON } from 'src/assets/svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +16,15 @@ import { UserService } from 'src/app/services/user-service/user.service';
 export class LoginComponent {
   loginForm: FormGroup;
   submitted = false;
+  passType = "hide";
 
-  constructor(public formBuilder: FormBuilder, private loginService: UserService, public router: Router, private snackBar: MatSnackBar) {
+  constructor(public formBuilder: FormBuilder, private loginService: UserService, public router: Router, private snackBar: MatSnackBar, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+    iconRegistry.addSvgIconLiteral('show-password-icon', sanitizer.bypassSecurityTrustHtml(SHOW_PASS_ICON));
+    iconRegistry.addSvgIconLiteral('hide-password-icon', sanitizer.bypassSecurityTrustHtml(HIDE_PASS_ICON));
   } 
 
   get userName() {
@@ -35,6 +41,10 @@ export class LoginComponent {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
+  }
+
+  togglePasswordVisibility(visibility = "hide") {  
+    this.passType = visibility
   }
 
   async handleLogin() {
