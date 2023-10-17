@@ -4,6 +4,9 @@ import { MustMatch } from './must-match.validator';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
+import { HIDE_PASS_ICON, SHOW_PASS_ICON } from 'src/assets/svg-icons';
 
 @Component({
   selector: 'app-signup',
@@ -14,8 +17,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
+  passType = "hide"
+  confirmPassType = "hide"
 
-  constructor(private formBuilder: FormBuilder, private signupService: UserService, public router: Router, public snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private signupService: UserService, public router: Router, public snackBar: MatSnackBar, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     this.registerForm = this.formBuilder.group(
       {
         fName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
@@ -25,7 +30,10 @@ export class SignupComponent implements OnInit {
         confirmPassword: ['', Validators.required],
       },
       { validator: MustMatch('newPassword', 'confirmPassword'), }
-  )}
+    )
+    iconRegistry.addSvgIconLiteral('show-password-icon', sanitizer.bypassSecurityTrustHtml(SHOW_PASS_ICON));
+    iconRegistry.addSvgIconLiteral('hide-password-icon', sanitizer.bypassSecurityTrustHtml(HIDE_PASS_ICON));
+  }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
@@ -69,6 +77,11 @@ export class SignupComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
+  }
+
+  togglePasswordVisibility({...param}) {
+    let {type, visibility} = param
+    type == "password" ? this.passType = visibility : this.confirmPassType = visibility
   }
 
   async handleSignUp() {
